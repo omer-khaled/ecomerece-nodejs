@@ -1,0 +1,30 @@
+<%-include('../includes/head.ejs')%>
+<%-include('../includes/homeNavigation.ejs')%>
+<main class="container">
+  <h1 class="w-100 text-center text-primary">Cart</h1>
+  <%if(login){%>
+    <%if(products.length!==0){%>
+        <div class="row row-cols-4 mt-4 gap-4 justify-content-center">
+            <%products.forEach((product)=>{%>
+                <div class="card col p-0" style="width: 250px;">
+                    <img src="<%=product.imageUrl%>" style="height: 250px; object-fit: cover; object-position: top;" class="card-img-top img-fluid" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"><%=product.title%></h5>
+                        <p class="card-text"><%=product.description%></p>
+                        <p class="card-text"><%=product.price%>$</p>
+                        <p class="card-text">number of porudcts : <%=product.cartItems.qty%></p>
+                        <p class="card-text">total price of product : <%=product.cartItems.qty * product.price%>$</p>
+                        <a href="/user/deletetocart/<%=product.id%>" class="btn btn-danger w-100 d-block mb-2">Delete From Cart</a>
+                    </div>
+                </div>
+            <%})%>
+        </div>
+    <%}else{%>
+        <h1 class="text-center mt-4">No products for now</h1>
+    <%}%>
+  <%}else{%>
+    <%-include('../includes/userForm.ejs')%>
+  <%}%>
+  <h1 class="w-100 text-center text-primary"><%=total%> $</h1>
+</main>
+<%-include('../includes/end.ejs')%>

@@ -1,0 +1,23 @@
+<%-include('../includes/head.ejs')%>
+<%-include('../includes/adminNavigation.ejs')%>
+<main class="container">
+    <%if(products.length!==0){%>
+        <div class="row row-cols-4 mt-4 gap-4 justify-content-center">
+            <%products.forEach((product)=>{%>
+                <div class="card col p-0" style="width: 250px;">
+                    <img src="<%=product.imageUrl%>" style="height: 250px; object-fit: cover; object-position: top;" class="card-img-top img-fluid" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"><%=product.title%></h5>
+                        <p class="card-text"><%=product.description%></p>
+                        <p class="card-text"><%=product.price%>$</p>
+                        <a href="/admin/editProduct/<%=product.id%>" class="btn btn-primary w-100 d-block mb-2">Edit porduct</a>
+                        <a href="/admin/deleteProduct/<%=product.id%>" class="btn btn-danger w-100">Delete porduct</a>
+                    </div>
+                </div>
+            <%})%>
+        </div>
+    <%}else{%>
+        <h1 class="text-center mt-4">No products for now</h1>
+    <%}%>
+</main>
+<%-include('../includes/end.ejs')%>

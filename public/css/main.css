@@ -1,0 +1,7 @@
+.navbar-nav .nav-link.active{
+    font-weight:bold;
+}
+img{
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}

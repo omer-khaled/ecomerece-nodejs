@@ -1,0 +1,30 @@
+<%-include('../includes/head.ejs')%>
+<%-include('../includes/homeNavigation.ejs')%>
+<main class="container">
+  <%if(login){%>
+    <div class="d-flex justify-content-between align-content-center">
+      <span>name : <%=user.name%></span>
+      <span>email : <%=user.email%></span>
+    </div>
+    <%if(products.length!==0){%>
+        <div class="row row-cols-4 mt-4 gap-4 justify-content-center">
+            <%products.forEach((product)=>{%>
+                <div class="card col p-0" style="width: 250px;">
+                    <img src="<%=product.imageUrl%>" style="height: 250px; object-fit: cover; object-position: top;" class="card-img-top img-fluid" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"><%=product.title%></h5>
+                        <p class="card-text"><%=product.description%></p>
+                        <p class="card-text"><%=product.price%>$</p>
+                        <a href="/user/addtocart/<%=product.id%>" class="btn btn-primary w-100 d-block mb-2">Add To Cart</a>
+                    </div>
+                </div>
+            <%})%>
+        </div>
+    <%}else{%>
+        <h1 class="text-center mt-4">No products for now</h1>
+    <%}%>
+  <%}else{%>
+    <%-include('../includes/userForm.ejs')%>
+  <%}%>
+</main>
+<%-include('../includes/end.ejs')%>

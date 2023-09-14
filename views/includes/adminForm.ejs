@@ -1,0 +1,19 @@
+<form method="POST" action="<%=(product)?`/admin/editProduct/${product.id}`:'/admin/addproduct'%>">
+    <div class="mb-3">
+      <label for="title" class="form-label">title</label>
+      <input type="text" value="<%=(product)?product.title:''%>" name="title" class="form-control" id="title" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="url" url="form-label">url</label>
+      <input type="url" value="<%=(product)?product.imageUrl:''%>" name="imageUrl" class="form-control" id="url">
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">description</label>
+        <input type="text" value="<%=(product)?product.description:''%>" name="description" class="form-control" id="description" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="price" class="form-label">price</label>
+        <input type="number" step=any value="<%=(product)?product.price:''%>" name="price" class="form-control" id="price" aria-describedby="emailHelp">
+      </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
